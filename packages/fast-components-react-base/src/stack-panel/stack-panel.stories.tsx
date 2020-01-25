@@ -113,7 +113,6 @@ const uniformImages: JSX.Element[] = [
                         height: "100px",
                     }}
                 />
-                ;
             </Button>
         );
     }
