@@ -10,3 +10,4 @@ Here you'll find specifications for custom elements and other library features.
 - [Form associated custom elements]("./form-associated-custom-element.md")
 - [Switch](./switch.md)
 - [Tree View](./tree-view/tree-view.md)
+- [Typography](./typography.md)
