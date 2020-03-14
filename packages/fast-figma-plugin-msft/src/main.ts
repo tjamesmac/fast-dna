@@ -20,9 +20,11 @@ function friendlyName(str: string): string {
 
 function register(type: RecipeTypes, recipes: RecipeStore): void {
     Object.keys(recipes).forEach((key: string) => {
+        const recipe = recipes[key];
+
         const definition: RecipeDefinition = {
             id: key,
-            name: friendlyName(key),
+            name: recipe.name,
             type,
             evaluate: (node: PluginNode): string => {
                 const parent = node.parent();
@@ -30,7 +32,7 @@ function register(type: RecipeTypes, recipes: RecipeStore): void {
                     ? parent.getEffectiveBackgroundColor()
                     : node.getEffectiveBackgroundColor();
 
-                return recipes[key]({
+                return recipe.resolver({
                     ...node.designSystem,
                     backgroundColor: backgroundColor.toStringHexRGB(),
                 } as any);
@@ -75,6 +77,7 @@ register(RecipeTypes.strokeFills, strokeRecipes);
  */
 figma.showUI(__html__, {
     height: 600,
+    width: 356,
 });
 
 /**
