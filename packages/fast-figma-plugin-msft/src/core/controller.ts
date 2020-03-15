@@ -194,6 +194,7 @@ export abstract class Controller {
                     break;
                 case RecipeTypes.foregroundFills:
                 case RecipeTypes.strokeFills:
+                case RecipeTypes.cornerRadius:
                     node.paint(this.recipeRegistry.toData(recipe.id, node));
                     break;
             }

@@ -4,6 +4,7 @@ export enum RecipeTypes {
     backgroundFills = "backgroundFills",
     foregroundFills = "foregroundFills",
     strokeFills = "strokeFills",
+    cornerRadius = "cornerRadius",
 }
 
 /**
