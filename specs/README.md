@@ -13,6 +13,7 @@ Here you'll find specifications for custom elements and other library features.
 - [Menu](./menu/menu.md)
 - [Progress](./progress.md)
 - [Switch](./switch.md)
+- [Tabs](./tabs/tabs.md)
 - [Text Area](./text-area/text-area.md)
 - [Text Field](./text-field/text-field.md)
 - [Tree View](./tree-view/tree-view.md)
