@@ -8,6 +8,7 @@ import {
     keyCodeArrowUp,
     keyCodeEnd,
     keyCodeHome,
+    Orientation,
 } from "@microsoft/fast-web-utilities";
 import { get } from "lodash-es";
 import React from "react";
@@ -37,6 +38,7 @@ export interface TabsState {
 
 class Tabs extends Foundation<TabsHandledProps, TabsUnhandledProps, TabsState> {
     public static defaultProps: Partial<TabsProps> = {
+        orientation: Orientation.horizontal,
         disableTabFocus: false,
         managedClasses: {},
     };
@@ -316,17 +318,32 @@ class Tabs extends Foundation<TabsHandledProps, TabsUnhandledProps, TabsState> {
      * Handles the keydown event on the tab element
      */
     private handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>): void => {
+        const isHorizontal: boolean = this.props.orientation === Orientation.horizontal;
+
         switch (e.keyCode) {
             case keyCodeArrowLeft:
+                if (isHorizontal) {
+                    e.preventDefault();
+                    this.activateTab(TabLocation.previous);
+                }
+                break;
             case keyCodeArrowUp:
-                e.preventDefault();
-                this.activateTab(TabLocation.previous);
+                if (!isHorizontal) {
+                    e.preventDefault();
+                    this.activateTab(TabLocation.previous);
+                }
                 break;
             case keyCodeArrowRight:
+                if (isHorizontal) {
+                    e.preventDefault();
+                    this.activateTab(TabLocation.next);
+                }
+                break;
             case keyCodeArrowDown:
-                e.preventDefault();
-
-                this.activateTab(TabLocation.next);
+                if (!isHorizontal) {
+                    e.preventDefault();
+                    this.activateTab(TabLocation.next);
+                }
                 break;
             case keyCodeHome:
                 this.activateTab(TabLocation.first);
